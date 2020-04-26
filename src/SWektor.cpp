@@ -6,8 +6,7 @@ SWektor<T, SIZE>::SWektor()
     Wymiar = 5;
     for (int i=0; i<Wymiar; i++)
     {
-        dane[i].GetRe() = 0;
-        dane[i].GetIm() = 0;
+        dane[i] = 0.0;
     }
 }
 template<class T, int SIZE>
@@ -16,7 +15,7 @@ SWektor<T, SIZE>::SWektor(T *tab, int rozmiar)
     Wymiar = rozmiar;
     for (int i=0; i<Wymiar; i++)
     {
-        dane[i] = tab;
+        dane[i] = tab[i];
     }
 }
 

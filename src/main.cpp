@@ -1,9 +1,12 @@
-#include "SWektor.hh"
-#include "Wektor.hh"
-#include "Macierz.hh"
-#include "UkladRownanLiniowych.hh"
+#include "SWektorKon.cpp"
+#include <iostream>
+#include <fstream>
+ 
+ 
+
 
 using namespace std;
+
 
 int main(int argc, char **argv)
 {

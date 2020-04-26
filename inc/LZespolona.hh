@@ -14,9 +14,13 @@ Zespolona (double & Re, double & Im); //Konstruktor dwu-parametryczny
 double & GetRe();
 double & GetIm();
 Zespolona  operator + (const Zespolona & Skl1)const;
+Zespolona  operator += (const Zespolona & Skl1);
 Zespolona  operator - (const Zespolona & Skl1)const;
+Zespolona  operator -= (const Zespolona & Skl1);
 Zespolona  operator * (const Zespolona & Skl1)const;
 Zespolona  operator / (const Zespolona & Skl1)const;
+Zespolona operator = (const Zespolona & Skl1);
+Zespolona operator = (double Skl1);
 bool operator == (const Zespolona & Skl1)const;
 bool operator != (const Zespolona & Skl1)const;
 

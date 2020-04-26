@@ -2,8 +2,8 @@
 
 Zespolona::Zespolona()
 {
-  Re =0;
-  Im =0;
+  Re =0.0;
+  Im =0.0;
 }
 
 Zespolona::Zespolona(double & re, double & im)
@@ -31,6 +31,11 @@ Zespolona  Zespolona::operator + (const Zespolona & Skl1)const
   return Wynik;
 }
 
+Zespolona Zespolona::operator += (const Zespolona & Skl1)
+{
+  return *this=*this+Skl1;
+}
+
 Zespolona  Zespolona::operator - (const Zespolona & Skl1)const
 {
   Zespolona  Wynik;
@@ -38,6 +43,11 @@ Zespolona  Zespolona::operator - (const Zespolona & Skl1)const
   Wynik.Re = Re - Skl1.Re;
   Wynik.Im = Im - Skl1.Im;
   return Wynik;
+}
+
+Zespolona Zespolona::operator -= (const Zespolona & Skl1)
+{
+  return *this=*this-Skl1;
 }
 
 Zespolona  Zespolona::operator * (const Zespolona & Skl1)const
@@ -71,9 +81,21 @@ Zespolona Zespolona::operator / (const Zespolona & Skl1)const
     //std::cout << Wynik.Re << " " << Wynik.Im << "i" << std::endl;
     return Wynik;
   }
-  
+}
 
-  
+Zespolona  Zespolona::operator = (const Zespolona & Skl1)
+{
+  Re = Skl1.Re;
+  Im = Skl1.Im;
+
+  return *this;
+}
+
+Zespolona Zespolona::operator = (double Skl1)
+{
+  Re = Skl1;
+  Im = Skl1;
+  return *this;
 }
 
 Zespolona Zespolona::sprzezenie()const
