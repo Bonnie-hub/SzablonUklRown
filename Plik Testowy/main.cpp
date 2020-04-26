@@ -16,20 +16,26 @@ int main(int argc, char **argv)
         {
         case 'r':
         {
+			ifstream plik;
+			plik.open("PlikReal.txt", ios::in);
             double tab[ROZMIAR];
             for(int i=0; i<ROZMIAR; i++)
-                cin >> tab[i];
+                plik >> tab[i];
             SWektor<double, 5> Wek(tab, ROZMIAR);
             cout << Wek << endl;
+			plik.close();
             break;
         }
         case 'z':
         {
+			ifstream plik;
+			plik.open("PlikZesp.txt", ios::in);
             Zespolona tabZ[ROZMIAR];
             for(int i=0; i<ROZMIAR; i++)
-                cin >> tabZ[i];
+                plik >> tabZ[i];
             SWektor<Zespolona, 5> WekZ(tabZ, ROZMIAR);
             cout << WekZ << endl;
+			plik.close();
             break;
         }
         default:
