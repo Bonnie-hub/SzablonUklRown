@@ -1,11 +1,12 @@
 #ifndef WEKTOR_HH
 #define WEKTOR_HH
 #define E 0.0000001  
-#define ROZMIAR 3
+#define ROZMIAR 5
 
 #include <cmath>
 #include <iostream>
 #include <iomanip>
+//#include "SWektor.hh"
 
 class Wektor {
 
