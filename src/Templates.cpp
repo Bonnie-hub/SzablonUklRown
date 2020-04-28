@@ -1,7 +1,10 @@
 #include "SWektor.cpp"
-//#include "Wektor.cpp"
-//#include "Macierz.cpp"
+#include "SMacierz.cpp"
 #include "LZespolona.hh"
+
+template class SMacierz<double, ROZMIAR>;
+template std::istream& operator >> (std::istream &Strm, SMacierz<double, ROZMIAR> &Mac);
+template std::ostream& operator << (std::ostream &Strm, const SMacierz<double, ROZMIAR> &Mac);
 
 template class SWektor<Zespolona,5>;
 template class SWektor<double,5>;

@@ -10,21 +10,29 @@ class  Zespolona {
 
 public:
 Zespolona(); //Konstruktor bez parametryczny
-Zespolona (double & Re, double & Im); //Konstruktor dwu-parametryczny
+Zespolona (double Re, double Im); //Konstruktor dwu-parametryczny
 const double & GetRe()const;
 const double & GetIm()const;
-double & get_re();
-double & get_im();
+double & SetRe();
+double & SetIm();
 Zespolona  operator + (const Zespolona & Skl1)const;
 Zespolona  operator += (const Zespolona & Skl1);
 Zespolona  operator - (const Zespolona & Skl1)const;
 Zespolona  operator -= (const Zespolona & Skl1);
 Zespolona  operator * (const Zespolona & Skl1)const;
+Zespolona  operator *= (const Zespolona & Skl1);
+Zespolona  operator * (const double & Skl1)const;
+Zespolona  operator *= (const double & Skl1);
 Zespolona  operator / (const Zespolona & Skl1)const;
+Zespolona  operator /= (const Zespolona & Skl1);
 Zespolona operator = (const Zespolona & Skl1);
 Zespolona operator = (double Skl1);
 bool operator == (const Zespolona & Skl1)const;
 bool operator != (const Zespolona & Skl1)const;
+bool operator > (const Zespolona & Skl1)const;
+bool operator >= (const Zespolona & Skl1)const;
+bool operator < (const Zespolona & Skl1)const;
+bool operator <= (const Zespolona & Skl1)const;
 
 double modul()const;
 Zespolona sprzezenie()const;

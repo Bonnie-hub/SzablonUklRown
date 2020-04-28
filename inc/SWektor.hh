@@ -1,4 +1,5 @@
 #ifndef SWEKTOR_HH
+#define SWEKTOR_HH
 #define E 0.0000001  
 #define ROZMIAR 5
 
@@ -16,9 +17,10 @@ class SWektor
   public:
   
   SWektor();                                      //Kontruktor bezparametryczny
-  SWektor(T *dane, int Rozmiar);                  //Kontruktor dwuparametryczny
+  SWektor(T *dane);                               //Kontruktor dwuparametryczny
   ~SWektor();                                     //Destruktor
   T operator *(const SWektor & W2)const;          //Iloczyn skalarny
+  SWektor operator =(T W2);                       //Przypisanie wartości pod każdą zmienną wektora
   SWektor operator +=(const SWektor & W2);        //Dodawanie wektorów do istniejącego wektora
   SWektor operator +(const SWektor & W2)const;    //Dodawanie wektorów
   SWektor operator -=(const SWektor & W2);        //Odejmowanie wektorów od istniejącego wektora
@@ -34,6 +36,4 @@ std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);
 
 template<class T, int SIZE>
 std::ostream& operator << (std::ostream &Strm, const SWektor<T, SIZE> &Wek);
-
-
 #endif 

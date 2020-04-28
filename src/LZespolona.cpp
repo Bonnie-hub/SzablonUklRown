@@ -6,7 +6,7 @@ Zespolona::Zespolona()
   Im =0.0;
 }
 
-Zespolona::Zespolona(double & re, double & im)
+Zespolona::Zespolona(double re, double im)
 {
   Re = re;
   Im = im;
@@ -22,12 +22,12 @@ const double & Zespolona::GetIm()const
   return Im;
 }
 
-double & Zespolona::get_re()
+double & Zespolona::SetRe()
 {
   return Re;
 }
 
-double & Zespolona::get_im()
+double & Zespolona::SetIm()
 {
   return Im;
 }
@@ -70,6 +70,25 @@ Zespolona  Zespolona::operator * (const Zespolona & Skl1)const
   return Wynik;
 }
 
+Zespolona Zespolona::operator *= (const Zespolona & Skl1)
+{
+  return *this=*this*Skl1;
+}
+
+Zespolona Zespolona::operator * (const double & Skl1)const
+{
+  Zespolona Wynik;
+
+  Wynik.Re = Re*Skl1;
+  Wynik.Im = Im*Skl1;
+  return Wynik;
+}
+
+Zespolona Zespolona::operator *= (const double & Skl1)
+{
+  return *this=*this*Skl1;
+}
+
 Zespolona Zespolona::operator / (const Zespolona & Skl1)const 
 {
   Zespolona Wynik, Licznik;
@@ -93,6 +112,11 @@ Zespolona Zespolona::operator / (const Zespolona & Skl1)const
   }
 }
 
+Zespolona Zespolona::operator /= (const Zespolona & Skl1)
+{
+  return *this=*this/Skl1;
+}
+
 Zespolona  Zespolona::operator = (const Zespolona & Skl1)
 {
   Re = Skl1.Re;
@@ -104,7 +128,7 @@ Zespolona  Zespolona::operator = (const Zespolona & Skl1)
 Zespolona Zespolona::operator = (double Skl1)
 {
   Re = Skl1;
-  Im = Skl1;
+  Im = 0;
   return *this;
 }
 
@@ -138,6 +162,32 @@ double Zespolona::modul()const
     return !(*this == Skl1);
  }
 
+ bool Zespolona::operator > (const Zespolona & Skl1)const
+ {
+    if((*this).modul()>Skl1.modul())
+      return true;
+    else
+      return false;
+ }
+
+ bool Zespolona::operator >= (const Zespolona & Skl1)const
+ {
+   if((*this).modul()>=Skl1.modul())
+      return true;
+    else
+      return false;
+ }
+
+ bool Zespolona::operator < (const Zespolona & Skl1)const
+ {
+   return !(*this>=Skl1);
+ }
+
+ bool Zespolona::operator <= (const Zespolona & Skl1)const
+ {
+   return !(*this>Skl1);
+ }
+
 std::istream & operator >> (std::istream & str, Zespolona &in)
 {
   char znak;
@@ -147,8 +197,8 @@ std::istream & operator >> (std::istream & str, Zespolona &in)
     str.setstate(std::ios::failbit);
   }
 
-  str>>in.get_re();
-  str>>in.get_im();
+  str>>in.SetRe();
+  str>>in.SetIm();
   str>>znak;
 
   if(znak != 'i') {

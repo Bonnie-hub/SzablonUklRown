@@ -10,9 +10,9 @@ SWektor<T, SIZE>::SWektor()
     }
 }
 template<class T, int SIZE>
-SWektor<T, SIZE>::SWektor(T *tab, int rozmiar)
+SWektor<T, SIZE>::SWektor(T *tab)
 {
-    Wymiar = rozmiar;
+    Wymiar = SIZE;
     for (int i=0; i<Wymiar; i++)
     {
         dane[i] = tab[i];
@@ -48,6 +48,16 @@ const T & SWektor<T, SIZE>::operator[] (int indeks)const
 }
 
 template<class T, int SIZE>
+SWektor<T, SIZE> SWektor<T, SIZE>::operator =(T W2)
+{
+    for (int i=0; i<Wymiar; i++)
+    {
+        dane[i] = W2;
+    }
+    return *this;
+}
+
+template<class T, int SIZE>
 SWektor<T, SIZE> SWektor<T, SIZE>::operator +(const SWektor<T,SIZE> & W2) const
 {
     if(W2.Wymiar == Wymiar)
@@ -59,7 +69,7 @@ SWektor<T, SIZE> SWektor<T, SIZE>::operator +(const SWektor<T,SIZE> & W2) const
             dodaj[i] = 0;
             dodaj[i] = W2[i] + dane[i]; 
         }
-    return SWektor(dodaj, Wymiar);
+    return SWektor(dodaj);
     }
     else
     {
@@ -87,7 +97,7 @@ SWektor<T, SIZE> SWektor<T, SIZE>::operator -(const SWektor<T,SIZE> & W2) const
             odejmij[i] = 0;
             odejmij[i] = dane[i] - W2[i]; 
         }
-    return SWektor(odejmij, Wymiar);
+    return SWektor(odejmij);
     }
     else
     {
