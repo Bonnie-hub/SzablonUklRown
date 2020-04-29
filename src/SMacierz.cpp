@@ -174,8 +174,6 @@ SMacierz<T,SIZE> SMacierz<T,SIZE>::transponowanie()const
 template<class T, int SIZE>
 T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
 {
-    T Eps;
-    Eps = 0;
     T det;
     det = 1;
     SMacierz<T,SIZE> M;
@@ -197,13 +195,13 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
     {
         for(int i=0; i<M.Rozmiar; i++)//Przestawianie wierszy
         {
-            if(M[i][i]>Eps*-1&&M[i][i]<Eps)
+            if(M[i][i]<E)
             {
                 int j;
                 for(j=i; j<M.Rozmiar; j++)
                 {
 
-                    if(M[j][i]>Eps&&M[j][i]<Eps*-1)
+                    if(M[j][i]>E)
                     {
                         SWektor<T,SIZE> Pom = M[i]; 
                         M[i] = M[j];
@@ -220,7 +218,7 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
             }
             for(int j=i+1; j<M.Rozmiar; j++)
             {
-                if(M[i][i]>Eps*-1&&M[i][i]<Eps)
+                if(M[i][i]<E)
                     continue;
                 T wielokrotnosc = M[j][i]/M[i][i];
                 M[j] -= M[i] * wielokrotnosc;
@@ -254,7 +252,7 @@ std::ostream& operator << (std::ostream &Strm, const SMacierz<T, SIZE> &Mac)
         for(int j=0; j<Mac[0].Pobierz_Wymiar(); j++)
         {
             if(j < Mac[0].Pobierz_Wymiar() - 1)
-            Strm << Mac[i][j] << ", ";
+            Strm << Mac[i][j] << " ";
             else
             Strm << Mac[i][j];
         }

@@ -1,10 +1,40 @@
 #include "Templates.cpp"
 #include "SWektor.hh"
 #include "SMacierz.hh"
+#include "SUklad.hh"
 #include <iostream>
 #include <fstream>
  
 using namespace std;
+
+void UkladReal()
+{
+    SUklad<double, ROZMIAR> Ukl;
+    for(int i=0; i<ROZMIAR+1; i++)
+    {
+        for(int j=0; j<ROZMIAR; j++)
+        {
+            cin >> Ukl;
+        }
+    }
+    cout << "Układ równań:" << endl << Ukl << endl;
+    cout << Ukl.Solve() << endl;
+}
+
+void UkladZesp()
+{
+    SUklad<double, ROZMIAR> Ukl;
+    for(int i=0; i<ROZMIAR+1; i++)
+    {
+        for(int j=0; j<ROZMIAR; j++)
+        {
+            cin >> Ukl;
+            //cout << Ukl.GetMatrix()[i][j] << endl;
+        }
+    }
+    cout << "Układ równań:" << endl << Ukl << endl;
+    cout << Ukl.Solve() << endl;
+}
 
 void TestLiczbReal()
 {
@@ -29,7 +59,8 @@ void TestLiczbReal()
     cout << Mac2 - Mac<< endl;
     cout << Mac * Mac2 << endl;
     cout << Mac * stala<< endl;
-    
+    cout << "wyznacznik macierzy 1:  " << Mac.Wyznacznik_Gaussa() << endl;
+    cout << "wyznacznik macierzy 2:  " << Mac2.Wyznacznik_Gaussa() << endl;
 }
 
 void TestLiczbZesp()
@@ -54,7 +85,10 @@ void TestLiczbZesp()
     cout << Mac2 - Mac<< endl;
     cout << Mac * Mac2 << endl;
     cout << Mac * stala<< endl;
+    cout << "Wyznacznik 1 macierzy:  " << Mac.Wyznacznik_Gaussa()<< endl;
+    cout << "Wyznacznik 2 macierzy:  " << Mac2.Wyznacznik_Gaussa()<< endl;
 }
+
 void LiczbyZesp()
 {
     Zespolona liczba(2, 2), liczba2(3, 3);
@@ -81,6 +115,14 @@ int main(int argc, char **argv)
         
 		case 'l':
 			LiczbyZesp();
+			break;
+
+        case 'Z':
+			UkladZesp();
+			break;
+
+        case 'R':
+			UkladReal();
 			break;
         default:
             cerr << "Nie podano odpowiedniego parametru, musi być 'r' lub 'z'" << endl;

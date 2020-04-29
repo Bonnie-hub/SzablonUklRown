@@ -31,7 +31,15 @@ double & Zespolona::SetIm()
 {
   return Im;
 }
-
+/*
+Zespolona Zespolona::abs()
+{
+  Zespolona Wynik;
+  Wynik.Re = abs(Re);
+  Wynik.Im = abs(Im);
+  return Wynik;
+}
+*/
 Zespolona  Zespolona::operator + (const Zespolona & Skl1)const
 {
   Zespolona  Wynik;
@@ -112,6 +120,14 @@ Zespolona Zespolona::operator / (const Zespolona & Skl1)const
   }
 }
 
+Zespolona  Zespolona::operator / (const double & Skl1)const
+{
+  Zespolona Wynik;
+  Wynik.Re = Re/Skl1;
+  Wynik.Im = Im/Skl1;
+  return Wynik;
+}
+
 Zespolona Zespolona::operator /= (const Zespolona & Skl1)
 {
   return *this=*this/Skl1;
@@ -187,6 +203,29 @@ double Zespolona::modul()const
  {
    return !(*this>Skl1);
  }
+
+bool Zespolona::operator > (const double & Skl1)const
+{
+  if((*this).modul()>Skl1)
+    return true;
+  else
+    return false;
+}
+bool Zespolona::operator >= (const double & Skl1)const
+{
+  if((*this).modul()>=Skl1)
+    return true;
+  else
+    return false;
+}
+bool Zespolona::operator < (const double & Skl1)const
+{
+  return !(*this>=Skl1);
+}
+bool Zespolona::operator <= (const double & Skl1)const
+{
+  return !(*this>Skl1);
+}
 
 std::istream & operator >> (std::istream & str, Zespolona &in)
 {
