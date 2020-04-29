@@ -3,7 +3,6 @@
 template<class T, int SIZE>
 SWektor<T, SIZE>::SWektor()
 {
-    Wymiar = 5;
     for (int i=0; i<Wymiar; i++)
     {
         dane[i] = 0.0;
@@ -12,7 +11,6 @@ SWektor<T, SIZE>::SWektor()
 template<class T, int SIZE>
 SWektor<T, SIZE>::SWektor(T *tab)
 {
-    Wymiar = SIZE;
     for (int i=0; i<Wymiar; i++)
     {
         dane[i] = tab[i];
@@ -151,7 +149,8 @@ T SWektor<T, SIZE>::operator *(const SWektor & W2)const
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek)
 {
-    for(int i=0; i<Wek.Pobierz_Wymiar(); i++)
+    
+    for(int i=0; i<ROZMIAR; i++)
     {
         Strm >> Wek[i];
     }

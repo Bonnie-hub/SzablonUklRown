@@ -11,7 +11,7 @@
 template<class T, int SIZE>
 class SWektor 
 {
-  int Wymiar = SIZE;
+  int Wymiar = ROZMIAR;
   T dane[SIZE];
 
   public:

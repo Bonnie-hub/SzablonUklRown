@@ -10,45 +10,30 @@ using namespace std;
 void UkladReal()
 {
     SUklad<double, ROZMIAR> Ukl;
-    for(int i=0; i<ROZMIAR+1; i++)
-    {
-        for(int j=0; j<ROZMIAR; j++)
-        {
-            cin >> Ukl;
-        }
-    }
+    cin >> Ukl;
     cout << "Układ równań:" << endl << Ukl << endl;
     cout << Ukl.Solve() << endl;
 }
 
 void UkladZesp()
 {
-    SUklad<double, ROZMIAR> Ukl;
-    for(int i=0; i<ROZMIAR+1; i++)
-    {
-        for(int j=0; j<ROZMIAR; j++)
-        {
-            cin >> Ukl;
-            //cout << Ukl.GetMatrix()[i][j] << endl;
-        }
-    }
+    SUklad<Zespolona, ROZMIAR> Ukl;
+    cin >> Ukl;
     cout << "Układ równań:" << endl << Ukl << endl;
     cout << Ukl.Solve() << endl;
 }
 
 void TestLiczbReal()
 {
-    //double tab[ROZMIAR][ROZMIAR], tab2[ROZMIAR][ROZMIAR], stala=2.5;
-    //SWektor<double, ROZMIAR> Wek[ROZMIAR], Wek2[ROZMIAR];
     double stala=2.5;
     SMacierz<double,ROZMIAR> Mac, Mac2; 
+    cin >> Mac;
     for(int i=0; i<ROZMIAR; i++)
     {
         for(int j=0; j<ROZMIAR; j++)
         {
 
             double a=j-i;        
-            cin >> Mac[i][j];
             Mac2[i][j] = Mac[j][i] + a;
         }
     }
@@ -68,36 +53,41 @@ void TestLiczbZesp()
     Zespolona stala(2.0, 2.0);
     Zespolona zmienna;
     SMacierz<Zespolona,ROZMIAR> Mac, Mac2;
+    cin >> Mac;
     for(int i=0; i<ROZMIAR; i++)
     {
         for(int j=0; j<ROZMIAR; j++)
         {
             zmienna.SetRe() = i+1.5*j;
             zmienna.SetIm() = i-j;
-            cin >> Mac[i][j];
             Mac2[i][j] = Mac[j][i] + zmienna;
         }
     }
 
     cout << "1 macierz:" << endl << Mac << endl;
-    cout << "2 macierz:" << endl << Mac2<< endl;
-    cout << Mac + Mac2<< endl;
-    cout << Mac2 - Mac<< endl;
-    cout << Mac * Mac2 << endl;
-    cout << Mac * stala<< endl;
+    //cout << "2 macierz:" << endl << Mac2<< endl;
+    //cout << Mac + Mac2<< endl;
+    //cout << Mac2 - Mac<< endl;
+    //cout << Mac * Mac2 << endl;
+    //cout << Mac * stala<< endl;
     cout << "Wyznacznik 1 macierzy:  " << Mac.Wyznacznik_Gaussa()<< endl;
-    cout << "Wyznacznik 2 macierzy:  " << Mac2.Wyznacznik_Gaussa()<< endl;
+    //cout << "Wyznacznik 2 macierzy:  " << Mac2.Wyznacznik_Gaussa()<< endl;
+}
+
+void WektorZesp()
+{
+    SWektor<Zespolona, ROZMIAR> Wek;
+    cin >> Wek;
+    cout << Wek << endl;
 }
 
 void LiczbyZesp()
-{
-    Zespolona liczba(2, 2), liczba2(3, 3);
-    Zespolona liczba3(1.0, 1.0);
-    double stala = 2;
-    cout << liczba3*liczba2 << endl;
-    cout << liczba3*liczba2/liczba << endl;
-    liczba3 = liczba3*stala-liczba3*liczba2/liczba;
-    cout << liczba3 << endl;
+{   
+    Zespolona liczba(2,1), liczba2(1,3);
+    cout << liczba << " " << liczba2 << endl;
+    cout << liczba/liczba2 << endl;
+    cout << liczba*liczba2 << endl;
+    cout << liczba2*liczba<< endl;
 }
 int main(int argc, char **argv)
 {
@@ -105,11 +95,11 @@ int main(int argc, char **argv)
     {
         switch (*argv[1])
         {
-        case 'z':
+        case 'Z':
             TestLiczbZesp();
             break;
        
-        case 'r':
+        case 'R':
             TestLiczbReal();    
             break;
         
@@ -117,13 +107,18 @@ int main(int argc, char **argv)
 			LiczbyZesp();
 			break;
 
-        case 'Z':
+        case 'z':
 			UkladZesp();
 			break;
 
-        case 'R':
+        case 'r':
 			UkladReal();
 			break;
+
+        case 'W':
+			WektorZesp();
+			break;
+
         default:
             cerr << "Nie podano odpowiedniego parametru, musi być 'r' lub 'z'" << endl;
             break;

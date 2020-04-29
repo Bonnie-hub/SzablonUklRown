@@ -3,8 +3,6 @@
 template<class T, int SIZE>
 SMacierz<T, SIZE>::SMacierz()
 {
-    Rozmiar = SIZE;
-    
     for (int i=0; i<Rozmiar; i++)
     {
         Wek[i] = SWektor<T, SIZE>();
@@ -14,8 +12,6 @@ SMacierz<T, SIZE>::SMacierz()
 template<class T, int SIZE>
 SMacierz<T, SIZE>::SMacierz(SWektor<T, SIZE> *Nowy)
 {
-    Rozmiar = SIZE;
-
     for (int i=0; i<Rozmiar; i++)
     {
         Wek[i] = Nowy[i];
@@ -210,16 +206,17 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
                         break;
                     }
                 }
-                if(j == Rozmiar)
+                if(j == Rozmiar)//Jeśli nie ma żadnej niezerowej w kolumnie, det=0
                     {
                         det = det*0;
                         return det;
                     }
             }
-            for(int j=i+1; j<M.Rozmiar; j++)
+            for(int j=i+1; j<M.Rozmiar; j++) //Zerowanie wierszy
             {
                 if(M[i][i]<E)
                     continue;
+                
                 T wielokrotnosc = M[j][i]/M[i][i];
                 M[j] -= M[i] * wielokrotnosc;
             }

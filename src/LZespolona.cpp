@@ -31,15 +31,7 @@ double & Zespolona::SetIm()
 {
   return Im;
 }
-/*
-Zespolona Zespolona::abs()
-{
-  Zespolona Wynik;
-  Wynik.Re = abs(Re);
-  Wynik.Im = abs(Im);
-  return Wynik;
-}
-*/
+
 Zespolona  Zespolona::operator + (const Zespolona & Skl1)const
 {
   Zespolona  Wynik;
@@ -115,7 +107,6 @@ Zespolona Zespolona::operator / (const Zespolona & Skl1)const
   {
     Wynik.Re = Licznik.Re/Mianownik;
     Wynik.Im = Licznik.Im/Mianownik;
-    //std::cout << Wynik.Re << " " << Wynik.Im << "i" << std::endl;
     return Wynik;
   }
 }
@@ -150,12 +141,12 @@ Zespolona Zespolona::operator = (double Skl1)
 
 Zespolona Zespolona::sprzezenie()const
 {
-  Zespolona Wynik;
+  Zespolona Wynik = *this;
   if(Im < E && Im > -E)
     return *this;
   else
   {
-    Wynik.Im = Im;
+    Wynik.Im = -Im;
     return Wynik;
   }
 }
@@ -180,18 +171,12 @@ double Zespolona::modul()const
 
  bool Zespolona::operator > (const Zespolona & Skl1)const
  {
-    if((*this).modul()>Skl1.modul())
-      return true;
-    else
-      return false;
+    return (*this).modul()>Skl1.modul();
  }
 
  bool Zespolona::operator >= (const Zespolona & Skl1)const
  {
-   if((*this).modul()>=Skl1.modul())
-      return true;
-    else
-      return false;
+    return (*this).modul()>=Skl1.modul();
  }
 
  bool Zespolona::operator < (const Zespolona & Skl1)const
@@ -206,17 +191,11 @@ double Zespolona::modul()const
 
 bool Zespolona::operator > (const double & Skl1)const
 {
-  if((*this).modul()>Skl1)
-    return true;
-  else
-    return false;
+  return (*this).modul()>Skl1;
 }
 bool Zespolona::operator >= (const double & Skl1)const
 {
-  if((*this).modul()>=Skl1)
-    return true;
-  else
-    return false;
+  return (*this).modul()>=Skl1;
 }
 bool Zespolona::operator < (const double & Skl1)const
 {

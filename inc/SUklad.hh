@@ -10,12 +10,12 @@ class SUklad
 
     public:
 
-    SUklad ();
-    SUklad (const SMacierz<T,SIZE> & M1, const SWektor<T,SIZE> & W1);
-    ~SUklad ();
-    SWektor<T,SIZE> & GetVector();
-    SMacierz<T,SIZE> & GetMatrix();
-    SWektor<T,SIZE> Solve() const;
+    SUklad ();                                                          //Kontruktor bezparametryczny
+    SUklad (const SMacierz<T,SIZE> & M1, const SWektor<T,SIZE> & W1);   //Konstruktor przyjmujący jako argument wektor i macierz
+    ~SUklad ();                                                         //Destruktor
+    SWektor<T,SIZE> & GetVector();                                      //Pobranie wektora
+    SMacierz<T,SIZE> & GetMatrix();                                     //Pobranie macierzy
+    SWektor<T,SIZE> Solve() const;                                      //Rozwiązanie układu równań
 };
 
 template<class T, int SIZE>
