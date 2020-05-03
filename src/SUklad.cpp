@@ -120,13 +120,13 @@ std::ostream& operator << (std::ostream    &Strm,
     {
         if(i+1 != modulo)
         {
-            Strm << UklRown.GetMatrix()[i] << " |X" << i+1 << "|" 
+            Strm << std::setw(5) << UklRown.GetMatrix()[i] << " |X" << i+1 << "|" 
             << "   " << "|" << UklRown.GetVector()[i] << "|"
             << std::endl;
         }
         else
         {
-            Strm << UklRown.GetMatrix()[i] << " |X" << i+1 << "|" 
+            Strm << std::setw(5) << UklRown.GetMatrix()[i] << " |X" << i+1 << "|" 
             << " = " << "|" << UklRown.GetVector()[i] << "|"
             << std::endl;
         }

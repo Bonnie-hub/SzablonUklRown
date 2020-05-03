@@ -1,3 +1,5 @@
+#ifndef TEMPLATE
+#define TEMPLATE
 #include "SWektor.cpp"
 #include "SMacierz.cpp"
 #include "SUklad.cpp"
@@ -28,3 +30,4 @@ template std::istream& operator >> (std::istream &Strm, SWektor<Zespolona,ROZMIA
 template std::istream& operator >> (std::istream &Strm, SWektor<double,ROZMIAR> &Wek);
 template std::ostream& operator << (std::ostream &Strm, const SWektor<Zespolona,ROZMIAR> &Wek);
 template std::ostream& operator << (std::ostream &Strm, const SWektor<double,ROZMIAR> &Wek);
+#endif

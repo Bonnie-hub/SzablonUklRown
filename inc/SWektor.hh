@@ -20,7 +20,7 @@ class SWektor
   SWektor(T *dane);                               //Kontruktor dwuparametryczny
   ~SWektor();                                     //Destruktor
   T operator *(const SWektor & W2)const;          //Iloczyn skalarny
-  SWektor operator =(T W2);                       //Przypisanie wartości pod każdą zmienną wektora
+  SWektor operator =(const T & W2);               //Przypisanie wartości pod każdą zmienną wektora
   SWektor operator +=(const SWektor & W2);        //Dodawanie wektorów do istniejącego wektora
   SWektor operator +(const SWektor & W2)const;    //Dodawanie wektorów
   SWektor operator -=(const SWektor & W2);        //Odejmowanie wektorów od istniejącego wektora
@@ -30,6 +30,7 @@ class SWektor
   T & operator[] (int indeks);                    //Zwraca liczbę wskazaną indeksem
   int Pobierz_Wymiar() const;                     //Zwraca liczbę wymiaru/rozmiaru wektora
   const T & Pobierz_dane() const;                 //Zwraca adres na tablicę zmiennych przechowywaną przez wektor
+  //double dlugosc()const;                        //Potrzebna specjalizacja
 };
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);

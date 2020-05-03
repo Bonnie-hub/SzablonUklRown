@@ -46,7 +46,7 @@ const T & SWektor<T, SIZE>::operator[] (int indeks)const
 }
 
 template<class T, int SIZE>
-SWektor<T, SIZE> SWektor<T, SIZE>::operator =(T W2)
+SWektor<T, SIZE> SWektor<T, SIZE>::operator =(const T & W2)
 {
     for (int i=0; i<Wymiar; i++)
     {
@@ -145,6 +145,21 @@ T SWektor<T, SIZE>::operator *(const SWektor & W2)const
     }
     return skalar;
 }
+/*
+template<class T, int SIZE>
+double SWektor<T,SIZE>::dlugosc()const
+{
+    double suma=0;
+    for (int i=0; i<Wymiar; i++)
+    {
+        suma += pow(dane[i].modul(),2);
+    }
+    return sqrt(suma);
+}
+
+template<>
+double SWektor<Zespolona,ROZMIAR>::dlugosc()const
+*/
 
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek)
