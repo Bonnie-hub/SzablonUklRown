@@ -20,7 +20,7 @@ void UkladReal()
 {
     SUklad<double, ROZMIAR> Ukl;
     cin >> Ukl;
-    cout << "Długość: " << dlugosc(Ukl.GetVector()) << endl;
+    //cout << "Długość: " << dlugosc(Ukl.GetVector()) << endl;
     cout << "Układ równań:" << endl << Ukl << endl;
     cout << Ukl.Solve() << endl;
 }

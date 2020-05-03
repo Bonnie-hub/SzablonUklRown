@@ -37,8 +37,8 @@ std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);
 
 template<class T, int SIZE>
 std::ostream& operator << (std::ostream &Strm, const SWektor<T, SIZE> &Wek);
-
+/*
 template<class T, int SIZE>
 double dlugosc(SWektor<T,SIZE> & W2);
-
+*/
 #endif 
