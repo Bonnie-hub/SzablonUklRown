@@ -10,8 +10,7 @@ uklad_rownan: obj/main.o obj/SUklad.o obj/SMacierz.o obj/LZespolona.o obj/SWekto
 	g++ -Wall -pedantic -o uklad_rownan obj/main.o obj/SUklad.o\
                                    obj/LZespolona.o obj/SWektor.o obj/SMacierz.o
 
-obj/main.o: src/main.cpp inc/SUklad.hh inc/SMacierz.hh inc/SWektor.hh\
-        inc/rozmiar.h
+obj/main.o: src/main.cpp inc/SUklad.hh inc/SMacierz.hh inc/SWektor.hh
 	g++ ${CPPFLAGS} -o obj/main.o src/main.cpp
 	
 obj/SUklad.o: src/SUklad.cpp inc/SUklad.hh

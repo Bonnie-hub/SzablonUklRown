@@ -38,27 +38,7 @@ std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);
 template<class T, int SIZE>
 std::ostream& operator << (std::ostream &Strm, const SWektor<T, SIZE> &Wek);
 
-
 template<class T, int SIZE>
-double dlugosc(SWektor<T,SIZE> & W2)
-{
-    double suma=0;
-    for (int i=0; i<ROZMIAR; i++)
-    {
-        suma += pow(W2[i],2);
-    }
-    return sqrt(suma);
-}
-
-template<>
-double dlugosc(SWektor<Zespolona,ROZMIAR> & W2)
-{
-    double suma=0;
-    for (int i=0; i<ROZMIAR; i++)
-    {
-        suma += pow(W2[i].modul(),2);
-    }
-    return sqrt(suma);
-}
+double dlugosc(SWektor<T,SIZE> & W2);
 
 #endif 
