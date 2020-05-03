@@ -7,17 +7,18 @@
  
 using namespace std;
 
-void UkladReal()
-{
-    SUklad<double, ROZMIAR> Ukl;
-    cin >> Ukl;
-    cout << "Układ równań:" << endl << Ukl << endl;
-    cout << Ukl.Solve() << endl;
-}
-
 void UkladZesp()
 {
     SUklad<Zespolona, ROZMIAR> Ukl;
+    cin >> Ukl;
+    //cout << "Długość: " << dlugosc(Ukl.GetVector()) << endl;
+    cout << "Układ równań:" << endl << Ukl << endl;
+    cout << Ukl.Solve() << endl;
+}
+//Poniżej funckje służące do testowania, main na końcu
+void UkladReal()
+{
+    SUklad<double, ROZMIAR> Ukl;
     cin >> Ukl;
     cout << "Układ równań:" << endl << Ukl << endl;
     cout << Ukl.Solve() << endl;
@@ -89,24 +90,14 @@ void LiczbyZesp()
     cout << liczba*liczba2 << endl;
     cout << liczba2*liczba<< endl;
 }
-int main(int argc, char **argv)
+int main()
 {
-    if(argc == 2)
-    {
-        switch (*argv[1])
+    char znak;
+    cin >> znak;
+ 
+    
+        switch (znak)
         {
-        case 'Z':
-            TestLiczbZesp();
-            break;
-       
-        case 'R':
-            TestLiczbReal();    
-            break;
-        
-		case 'l':
-			LiczbyZesp();
-			break;
-
         case 'z':
 			UkladZesp();
 			break;
@@ -115,30 +106,10 @@ int main(int argc, char **argv)
 			UkladReal();
 			break;
 
-        case 'W':
-			WektorZesp();
-			break;
-
         default:
             cerr << "Nie podano odpowiedniego parametru, musi być 'r' lub 'z'" << endl;
             break;
         }
         return 0;
-    }
-    else
-    {
-        cerr << "Nie podano odpowiedniego parametru, 'r' lub 'z'" << endl;
-        return 1;
-    }
     
 }
-/*
-UkladRownanLiniowych Rownanie;
-cin >> Rownanie;
-cout << "Równanie liniowe postaci: " << endl << Rownanie << endl;
-Wektor WektorWynik = Rownanie.Solve();
-cout << "Rozwiązanie: " << endl << WektorWynik << endl;
-Wektor WektorBledu = Rownanie.GetMatrix()*WektorWynik - Rownanie.GetVector();
-cout << "Wektor błędu: " << endl << WektorBledu << endl;
-cout << "Długość wektora błędu: " << endl <<  WektorBledu.dlugosc() << endl;
-*/

@@ -147,20 +147,27 @@ T SWektor<T, SIZE>::operator *(const SWektor & W2)const
 }
 /*
 template<class T, int SIZE>
-double SWektor<T,SIZE>::dlugosc()const
+double dlugosc(SWektor<T, SIZE> & W2)
 {
     double suma=0;
-    for (int i=0; i<Wymiar; i++)
+    for (int i=0; i<ROZMIAR; i++)
     {
-        suma += pow(dane[i].modul(),2);
+        suma += pow(W2[i],2);
     }
     return sqrt(suma);
 }
 
 template<>
-double SWektor<Zespolona,ROZMIAR>::dlugosc()const
+double dlugosc(SWektor<Zespolona, ROZMIAR> & W2)
+{
+    double suma=0;
+    for (int i=0; i<ROZMIAR; i++)
+    {
+        suma += pow(W2[i].modul(),2);
+    }
+    return sqrt(suma);
+}
 */
-
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek)
 {

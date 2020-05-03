@@ -30,11 +30,19 @@ class SWektor
   T & operator[] (int indeks);                    //Zwraca liczbę wskazaną indeksem
   int Pobierz_Wymiar() const;                     //Zwraca liczbę wymiaru/rozmiaru wektora
   const T & Pobierz_dane() const;                 //Zwraca adres na tablicę zmiennych przechowywaną przez wektor
-  //double dlugosc()const;                        //Potrzebna specjalizacja
+                          
 };
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);
 
 template<class T, int SIZE>
 std::ostream& operator << (std::ostream &Strm, const SWektor<T, SIZE> &Wek);
+
+/*
+template<class T, int SIZE>
+double dlugosc(SWektor<T,SIZE> & W2);
+
+template<>
+double dlugosc(SWektor<Zespolona,ROZMIAR> & W2);
+*/
 #endif 
